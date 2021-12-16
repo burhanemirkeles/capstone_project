@@ -45,6 +45,7 @@ class MapSampleState extends State<MapSample> {
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
+
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
