@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, duplicate_ignore, use_key_in_widget_constructors
 
-import 'package:capstone_project/components/rounded_button.dart';
+import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
