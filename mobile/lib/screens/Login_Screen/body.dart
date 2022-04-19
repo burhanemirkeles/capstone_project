@@ -5,6 +5,7 @@ import 'package:capstone_project/components/roundedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
+import 'package:capstone_project/components/assets.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -30,25 +31,29 @@ class Body extends StatelessWidget {
   }
 
   SvgPicture _svgPictureForLogo(Size size) {
+    String _svgName = IconAssets().login;
     return SvgPicture.asset(
-      "assets/icons/login.svg",
+      _svgName,
       height: size.height * 0.35,
     );
   }
 
   RoundedInputField _inputFieldForEmail() {
+    String _hintText = "Your Email";
     return RoundedInputField(
-        isObscure: false, hintText: "Your Email", onChanged: (value) {});
+        isObscure: false, hintText: _hintText, onChanged: (value) {});
   }
 
   RoundedInputField _inputFieldForPassword() {
+    String _hintText = "Your Password";
     return RoundedInputField(
-        isObscure: true, hintText: "Your Password", onChanged: (value) {});
+        isObscure: true, hintText: _hintText, onChanged: (value) {});
   }
 
   RoundedButton _loginButton() {
+    String _txtForButton = "LOGIN";
     return RoundedButton(
-      text: "LOGIN",
+      text: _txtForButton,
       onPress: () {
         // ignore: todo
         //TODO 1: take text strings from email & password fields

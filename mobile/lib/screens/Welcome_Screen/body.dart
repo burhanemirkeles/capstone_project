@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, duplicate_ignore, use_key_in_widget_constructors
 
+import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,23 +17,24 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPictureForLogo(size),
-            LoginButton(context),
-            SignupButton(context),
+            _svgPictureForLogo(size),
+            _loginButton(context),
+            _signUpButton(context),
           ],
         ),
       ),
     );
   }
 
-  SvgPicture SvgPictureForLogo(Size size) {
+  SvgPicture _svgPictureForLogo(Size size) {
+    String _svgName = IconAssets().chat;
     return SvgPicture.asset(
-      "assets/icons/chat.svg",
+      _svgName,
       height: size.height * 0.45,
     );
   }
 
-  RoundedButton SignupButton(BuildContext context) {
+  RoundedButton _signUpButton(BuildContext context) {
     return RoundedButton(
       text: "Sign Up",
       onPress: () {},
@@ -41,7 +43,7 @@ class Body extends StatelessWidget {
     );
   }
 
-  RoundedButton LoginButton(BuildContext context) {
+  RoundedButton _loginButton(BuildContext context) {
     return RoundedButton(
       text: "Login",
       onPress: () {
