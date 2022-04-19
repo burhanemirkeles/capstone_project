@@ -18,35 +18,35 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.03),
-            SvgPictureForLogo(size),
+            _svgPictureForLogo(size),
             SizedBox(height: size.height * 0.03),
-            InputFieldForEmail(),
-            InputFieldForPassword(),
-            LoginButton(),
+            _inputFieldForEmail(),
+            _inputFieldForPassword(),
+            _loginButton(),
           ],
         ),
       ),
     );
   }
 
-  Widget SvgPictureForLogo(Size size) {
+  SvgPicture _svgPictureForLogo(Size size) {
     return SvgPicture.asset(
       "assets/icons/login.svg",
       height: size.height * 0.35,
     );
   }
 
-  Widget InputFieldForEmail() {
+  RoundedInputField _inputFieldForEmail() {
     return RoundedInputField(
         isObscure: false, hintText: "Your Email", onChanged: (value) {});
   }
 
-  RoundedInputField InputFieldForPassword() {
+  RoundedInputField _inputFieldForPassword() {
     return RoundedInputField(
         isObscure: true, hintText: "Your Password", onChanged: (value) {});
   }
 
-  RoundedButton LoginButton() {
+  RoundedButton _loginButton() {
     return RoundedButton(
       text: "LOGIN",
       onPress: () {},
