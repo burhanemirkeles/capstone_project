@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:capstone_project/components/assets.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -19,23 +20,31 @@ class Background extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset("assets/images/main_top.png"),
-            width: size.width * 0.4,
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * 0.2,
-            ),
-          ),
+          _mainTopPositionedImage(size),
+          _mainBottomPositionedImage(size),
           child,
         ],
       ),
     );
   }
+}
+
+Positioned _mainTopPositionedImage(Size size) {
+  String _imageAsset = ImageAssets().mainTop;
+  return Positioned(
+    top: 0,
+    left: 0,
+    width: size.width * 0.04,
+    child: Image.asset(_imageAsset),
+  );
+}
+
+Positioned _mainBottomPositionedImage(Size size) {
+  String _imageAsset = ImageAssets().mainBottom;
+  return Positioned(
+    child: Image.asset(_imageAsset),
+    bottom: 0,
+    left: 0,
+    width: size.width * 0.2,
+  );
 }
