@@ -49,7 +49,14 @@ class Body extends StatelessWidget {
   RoundedButton _loginButton() {
     return RoundedButton(
       text: "LOGIN",
-      onPress: () {},
+      onPress: () {
+        // ignore: todo
+        //TODO 1: take text strings from email & password fields
+        // ignore: todo
+        //TODO 2: send the relevant data to service
+        // ignore: todo
+        //TODO 3: take to verification isVerified == true ? page->Nextpage : give error message to user
+      },
     );
   }
 }
