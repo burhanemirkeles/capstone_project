@@ -1,4 +1,6 @@
 # capstone_project
+## Definition of the project
+This project is developed as the capstone project of Software Engineering Dept. of Bahcesehir University by [@Elifnur Pamuk](https://github.com/epamuk) [@Efe Umut Aslan](https://github.com/efeumutaslan) and [@Burhan Emir Keles](https://github.com/burhanemirkeles).
+Backend side developed by @efeumutaslan, UI&UX designs designed by @epamuk and mobile application developed by @burhanemirkeles.
+In general, The aim of the project is observing the users the density of the people who vaccinated or not with using a heat map.
 
-
-"# capstone-project" 
