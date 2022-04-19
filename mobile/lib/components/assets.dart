@@ -1,7 +1,7 @@
 class IconAssets {
   String chat = "assets/icons/chat.svg";
   String login = "assets/icons/login.svg";
-  String signup = "assets/icons/signup";
+  String signup = "assets/icons/signup.svg";
 }
 
 class ImageAssets {

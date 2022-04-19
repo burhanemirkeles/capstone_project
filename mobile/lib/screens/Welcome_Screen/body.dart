@@ -3,6 +3,7 @@
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
+import 'package:capstone_project/screens/Signup_Screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../components/backgroundForLanding.dart';
@@ -37,7 +38,16 @@ class Body extends StatelessWidget {
   RoundedButton _signUpButton(BuildContext context) {
     return RoundedButton(
       text: "Sign Up",
-      onPress: () {},
+      onPress: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const SignupScreen();
+            },
+          ),
+        );
+      },
       color: kPrimaryLightColor,
       textColor: Colors.black,
     );
