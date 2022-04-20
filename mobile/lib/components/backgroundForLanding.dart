@@ -34,7 +34,7 @@ Positioned _mainTopPositionedImage(Size size) {
   return Positioned(
     top: 0,
     left: 0,
-    width: size.width * 0.04,
+    width: size.width * 0.4,
     child: Image.asset(_imageAsset),
   );
 }

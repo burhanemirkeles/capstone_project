@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
+import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
@@ -94,6 +95,11 @@ RoundedButton _loginButton(TextEditingController controllerEmail,
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return HomePage();
           }));
+        } else {
+          new CustomizedAlertDialog(
+            dialogTitle: "dialogTitle",
+            actions: <Widget>[],
+          );
         }
       });
 }
