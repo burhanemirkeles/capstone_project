@@ -1,5 +1,6 @@
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -10,7 +11,7 @@ class Body extends StatelessWidget {
     return const Center(
         child: ItemCard(
       borderRadius: 25.0,
-      routePage: HomePage(),
+      routePage: NewPage(),
     ));
   }
 }

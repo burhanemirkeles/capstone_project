@@ -96,7 +96,7 @@ RoundedButton _loginButton(TextEditingController controllerEmail,
             return HomePage();
           }));
         } else {
-          new CustomizedAlertDialog(
+          CustomizedAlertDialog(
             dialogTitle: "dialogTitle",
             actions: <Widget>[],
           );
