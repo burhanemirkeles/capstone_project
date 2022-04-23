@@ -1,4 +1,5 @@
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
+import 'package:capstone_project/screens/Home_Page/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -6,7 +7,11 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: ItemCard());
+    return const Center(
+        child: ItemCard(
+      borderRadius: 25.0,
+      routePage: HomePage(),
+    ));
   }
 }
 
