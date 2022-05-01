@@ -21,7 +21,7 @@ class GoogleMapsMapState extends State<GoogleMapsMap> {
           ),
           height: size.height * 0.4,
           width: size.width * 0.9,
-          child: _GoogleMaps(),
+          child: _googleMaps(),
           //padding: const EdgeInsets.all(35),
           //margin: const EdgeInsets.all(35),
         ),
@@ -30,12 +30,13 @@ class GoogleMapsMapState extends State<GoogleMapsMap> {
   }
 }
 
-GoogleMap _GoogleMaps() {
+GoogleMap _googleMaps() {
   const CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
+
   return const GoogleMap(
     initialCameraPosition: _kLake,
     zoomControlsEnabled: true,
