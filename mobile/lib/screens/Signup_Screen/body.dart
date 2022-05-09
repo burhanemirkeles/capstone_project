@@ -1,9 +1,11 @@
+import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
+import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -31,9 +33,10 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _svgPictureForLogo(size),
-            SizedBox(
-              height: size.height * 0.03,
+            _upperButtonContainer(context),
+            _signupImage(size),
+            const SizedBox(
+              height: 22,
             ),
             _inputFieldForEmail(textControllerEmail),
             _inputFieldForPassword(textControllerPassword),
@@ -45,11 +48,26 @@ class _BodyState extends State<Body> {
   }
 }
 
-SvgPicture _svgPictureForLogo(Size size) {
-  String _svgName = IconAssets().signup;
-  return SvgPicture.asset(
-    _svgName,
-    height: size.height * 0.35,
+Container _upperButtonContainer(BuildContext context) {
+  return Container(
+    child: CircularButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const WelcomeScreen();
+        }));
+      },
+    ),
+    alignment: Alignment.topLeft,
+    padding: const EdgeInsets.fromLTRB(20, 0, 0, 70),
+  );
+}
+
+Image _signupImage(Size size) {
+  String _imageName = ImageAssets().login;
+  return Image.asset(
+    _imageName,
+    //height: size.height * 0.35,
+    width: size.width,
   );
 }
 
@@ -60,6 +78,7 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
+    icon: Icons.email,
   );
 }
 
@@ -70,6 +89,7 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
+    icon: Icons.lock,
   );
 }
 
@@ -78,6 +98,9 @@ RoundedButton _signupButton(TextEditingController controllerEmail,
   String _txtForButton = "SIGNUP";
   return RoundedButton(
     text: _txtForButton,
+    borderRadius: 16,
+    textStyle: kHeadingTextStyle,
+    color: const Color.fromRGBO(255, 113, 143, 1),
     onPress: () {
       // ignore: todo
       //TODO 1: take text strings from email & password fields

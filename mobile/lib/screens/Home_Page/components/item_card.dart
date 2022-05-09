@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
@@ -10,6 +9,8 @@ class ItemCard extends StatelessWidget {
     this.heightMultiplier = 0.30,
     this.widthMultiplier = 0.50,
     required this.routePage,
+    required this.image,
+    required this.text,
   }) : super(key: key);
   final Color? color;
   final double? borderRadius;
@@ -17,6 +18,8 @@ class ItemCard extends StatelessWidget {
   final double? heightMultiplier;
   final double? widthMultiplier;
   final Widget routePage;
+  final Image image;
+  final Text text;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,18 +34,12 @@ class ItemCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius!),
           ),
           child: Column(
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  Text(
-                    "HEADLINE",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+            children: [
+              image,
+              SizedBox(
+                height: 10,
               ),
-              const Text("Context"),
+              text,
             ],
           ),
         ),
