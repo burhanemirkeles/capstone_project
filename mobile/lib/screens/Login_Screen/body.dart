@@ -122,7 +122,7 @@ RoundedButton _loginButton(TextEditingController controllerEmail,
           actions: <Widget>[],
         );
       }
-    },
+    }, //onPress
     textStyle: kHeadingTextStyle,
     color: Color.fromRGBO(255, 113, 143, 1),
   );

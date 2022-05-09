@@ -8,15 +8,16 @@ class RoundedButton extends StatelessWidget {
   final VoidCallback onPress;
   final Color color, textColor;
   final TextStyle? textStyle;
-
-  const RoundedButton(
-      {key,
-      required this.text,
-      required this.onPress,
-      this.color = kPrimaryColor,
-      this.textColor = Colors.white,
-      this.textStyle})
-      : super(key: key);
+  final double? borderRadius;
+  const RoundedButton({
+    key,
+    required this.text,
+    required this.onPress,
+    this.color = kPrimaryColor,
+    this.textColor = Colors.white,
+    this.textStyle,
+    this.borderRadius = 12,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class RoundedButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       width: size.width * 0.8,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(borderRadius!),
         child: newElevatedButton(),
       ),
     );
