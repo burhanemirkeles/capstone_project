@@ -17,13 +17,16 @@ class Background extends StatelessWidget {
     return SizedBox(
       height: size.height,
       width: double.infinity,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          _mainTopPositionedImage(size),
-          _mainBottomPositionedImage(size),
-          child,
-        ],
+      child: Container(
+        color: const Color.fromRGBO(207, 227, 252, 1),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            _mainTopPositionedImage(size),
+            _mainBottomPositionedImage(size),
+            child,
+          ],
+        ),
       ),
     );
   }
@@ -34,7 +37,7 @@ Positioned _mainTopPositionedImage(Size size) {
   return Positioned(
     top: 0,
     left: 0,
-    width: size.width * 0.4,
+    width: size.width * 0.2,
     child: Image.asset(_imageAsset),
   );
 }

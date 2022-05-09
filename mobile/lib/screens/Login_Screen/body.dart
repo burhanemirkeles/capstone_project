@@ -2,12 +2,15 @@
 
 import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+import 'package:capstone_project/Constants.dart';
+import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/components/assets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -35,8 +38,9 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: size.height * 0.03),
-            _svgPictureForLogo(size),
+            _upperButtonContainer(context),
+            SizedBox(height: size.height * 0.001),
+            _loginImage(size),
             SizedBox(height: size.height * 0.03),
             _inputFieldForEmail(textControllerEmail),
             _inputFieldForPassword(textControllerPassword),
@@ -48,11 +52,26 @@ class _BodyState extends State<Body> {
   }
 }
 
-SvgPicture _svgPictureForLogo(Size size) {
-  String _svgName = IconAssets().login;
-  return SvgPicture.asset(
-    _svgName,
-    height: size.height * 0.35,
+Container _upperButtonContainer(BuildContext context) {
+  return Container(
+    child: CircularButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return WelcomeScreen();
+        }));
+      },
+    ),
+    alignment: Alignment.topLeft,
+    padding: EdgeInsets.fromLTRB(20, 0, 0, 70),
+  );
+}
+
+Image _loginImage(Size size) {
+  String _imageName = ImageAssets().login;
+  return Image.asset(
+    _imageName,
+    //height: size.height * 0.35,
+    width: size.width,
   );
 }
 
@@ -63,6 +82,7 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
+    icon: Icons.email,
   );
 }
 
@@ -73,33 +93,37 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
+    icon: Icons.lock,
   );
 }
 
 RoundedButton _loginButton(TextEditingController controllerEmail,
     TextEditingController controllerPassword, BuildContext context) {
-  String _txtForButton = "LOGIN";
+  String _txtForButton = "Log in";
   return RoundedButton(
-      text: _txtForButton,
-      onPress: () {
-        //NOT USE PUSH ROUTE TO HOME PAGE !!!
-        //this logic is for only test
-        //main logic will be like:
-        /*onPress:(){
+    text: _txtForButton,
+    onPress: () {
+      //NOT USE PUSH ROUTE TO HOME PAGE !!!
+      //this logic is for only test
+      //main logic will be like:
+      /*onPress:(){
           _sendEmailAndPasswordTextToServer() ? route to Home Page : _displayErrorMessage()
           
         }
         */
-        if ((controllerEmail.text == "ABCD") &&
-            (controllerPassword.text == "1234")) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return HomePage();
-          }));
-        } else {
-          CustomizedAlertDialog(
-            dialogTitle: "dialogTitle",
-            actions: <Widget>[],
-          );
-        }
-      });
+      if ((controllerEmail.text == "ABCD") &&
+          (controllerPassword.text == "1234")) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return HomePage();
+        }));
+      } else {
+        CustomizedAlertDialog(
+          dialogTitle: "dialogTitle",
+          actions: <Widget>[],
+        );
+      }
+    },
+    textStyle: kHeadingTextStyle,
+    color: Color.fromRGBO(255, 113, 143, 1),
+  );
 }

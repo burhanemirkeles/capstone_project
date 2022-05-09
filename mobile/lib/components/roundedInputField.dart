@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, unused_import
 
+import 'package:capstone_project/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/constants';
 import 'package:capstone_project/components/textFieldContainer.dart';
@@ -10,13 +11,15 @@ class RoundedInputField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final bool isObscure;
   final TextEditingController? controller;
+  final Widget? child;
   const RoundedInputField(
       {Key? key,
       required this.hintText,
       this.icon = Icons.person,
       required this.onChanged,
       required this.isObscure,
-      this.controller})
+      this.controller,
+      this.child})
       : super(key: key);
 
   @override
@@ -35,6 +38,7 @@ class RoundedInputField extends StatelessWidget {
           border: InputBorder.none,
         ),
         controller: controller,
+        keyboardType: TextInputType.emailAddress,
       ),
     );
   }
