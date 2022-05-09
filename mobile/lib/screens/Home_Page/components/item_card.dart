@@ -36,7 +36,7 @@ class ItemCard extends StatelessWidget {
           child: Column(
             children: [
               image,
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               text,

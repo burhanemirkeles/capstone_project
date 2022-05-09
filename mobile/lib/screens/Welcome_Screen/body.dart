@@ -6,10 +6,8 @@ import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:capstone_project/screens/Signup_Screen/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/backgroundForLanding.dart';
-import 'package:capstone_project/constants';
 
 class Body extends StatelessWidget {
   @override
@@ -73,23 +71,23 @@ class Body extends StatelessWidget {
       borderRadius: 16,
     );
   }
-}
 
-RoundedButton _signUpButton(BuildContext context) {
-  return RoundedButton(
-    text: "Sign Up",
-    onPress: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const SignupScreen();
-          },
-        ),
-      );
-    },
-    textStyle: kHeadingTextStyle,
-    color: const Color.fromRGBO(255, 113, 143, 1),
-    borderRadius: 16,
-  );
+  RoundedButton _signUpButton(BuildContext context) {
+    return RoundedButton(
+      text: "Sign Up",
+      onPress: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const SignupScreen();
+            },
+          ),
+        );
+      },
+      textStyle: kHeadingTextStyle,
+      color: const Color.fromRGBO(255, 113, 143, 1),
+      borderRadius: 16,
+    );
+  }
 }
