@@ -1,4 +1,5 @@
 import 'package:capstone_project/components/assets.dart';
+import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Background(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -24,72 +25,63 @@ class Body extends StatelessWidget {
 
   ItemCard _itemCardOfCoronaTest() {
     return ItemCard(
-      borderRadius: 30.32,
       routePage: const NewPage(),
-      heightMultiplier: ItemCardConstants().heightMultiplier,
-      widthMultiplier: ItemCardConstants().widthMultiplier,
       image: Image.asset(ImageAssets().coronaIcon, alignment: Alignment.center),
       color: ItemCardConstants().coronaTestItemColor,
-      text: const Text("Corona Test"),
+      widget: Text(
+        "Corona Test",
+        style: ItemCardConstants().textStyle,
+      ),
     );
   }
 
   ItemCard _itemCardOfVaccination() {
     return ItemCard(
-      borderRadius: ItemCardConstants().borderRadius,
       routePage: const NewPage(),
-      heightMultiplier: ItemCardConstants().heightMultiplier,
-      widthMultiplier: ItemCardConstants().widthMultiplier,
       image:
           Image.asset(ImageAssets().vaccineIcon, alignment: Alignment.center),
       color: ItemCardConstants().vaccinationItemColor,
-      text: const Text("Vaccination"),
+      widget: Text(
+        "Vaccination",
+        style: ItemCardConstants().textStyle,
+      ),
     );
   }
 
   ItemCard _itemCardOfClinic() {
     return ItemCard(
-      borderRadius: ItemCardConstants().borderRadius,
       routePage: const NewPage(),
-      heightMultiplier: ItemCardConstants().heightMultiplier,
-      widthMultiplier: ItemCardConstants().widthMultiplier,
       image: Image.asset(ImageAssets().clinicIcon, alignment: Alignment.center),
       color: ItemCardConstants().clinicItemColor,
-      text: const Text(
+      widget: Text(
         "Nearby Clinic",
-        style: TextStyle(fontSize: 12),
+        style: ItemCardConstants().textStyle,
+        textAlign: TextAlign.center,
       ),
     );
   }
 
   ItemCard _itemCardOfEuInformation() {
     return ItemCard(
-      borderRadius: ItemCardConstants().borderRadius,
       routePage: const NewPage(),
-      heightMultiplier: ItemCardConstants().heightMultiplier,
-      widthMultiplier: ItemCardConstants().widthMultiplier,
       image: Image.asset(ImageAssets().euIcon, alignment: Alignment.center),
       color: ItemCardConstants().euItemColor,
-      text: const Text(
-        "EU Health Passaport",
-        style: TextStyle(
-          fontSize: 8,
-        ),
+      widget: Text(
+        "EU Health \n Password",
+        style: ItemCardConstants().textStyle,
       ),
     );
   }
 
   ItemCard _itemCardOfInformation() {
     return ItemCard(
-      borderRadius: ItemCardConstants().borderRadius,
       routePage: const NewPage(),
-      heightMultiplier: ItemCardConstants().heightMultiplier,
-      widthMultiplier: ItemCardConstants().widthMultiplier,
       image: Image.asset(ImageAssets().informationIcon,
           alignment: Alignment.center),
       color: ItemCardConstants().informationItemColor,
-      text: const Text(
+      widget: Text(
         "Information",
+        style: ItemCardConstants().textStyle,
       ),
     );
   }

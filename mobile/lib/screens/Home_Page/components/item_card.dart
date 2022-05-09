@@ -1,16 +1,18 @@
+import 'package:capstone_project/screens/Home_Page/components/itemCardConstants.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({
     Key? key,
     this.color = Colors.grey,
-    this.borderRadius = 15.0,
-    this.paddingValue = 15.0,
-    this.heightMultiplier = 0.30,
-    this.widthMultiplier = 0.50,
+    this.borderRadius = 30.32,
+    this.paddingValue = 2.0,
+    this.heightMultiplier = 0.13032,
+    this.widthMultiplier = 0.28295,
     required this.routePage,
     required this.image,
-    required this.text,
+    required this.widget,
+    this.margin = const EdgeInsets.all(15),
   }) : super(key: key);
   final Color? color;
   final double? borderRadius;
@@ -19,12 +21,14 @@ class ItemCard extends StatelessWidget {
   final double? widthMultiplier;
   final Widget routePage;
   final Image image;
-  final Text text;
+  final Widget widget;
+  final EdgeInsets? margin;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
         child: Container(
+          margin: margin,
           padding: EdgeInsets.all(paddingValue!),
           height: size.height * heightMultiplier!,
           width: size.width * widthMultiplier!,
@@ -34,12 +38,14 @@ class ItemCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius!),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               image,
               const SizedBox(
                 height: 10,
               ),
-              text,
+              widget,
             ],
           ),
         ),
