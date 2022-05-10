@@ -1,4 +1,3 @@
-import 'package:capstone_project/screens/Home_Page/components/itemCardConstants.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
@@ -12,7 +11,7 @@ class ItemCard extends StatelessWidget {
     required this.routePage,
     required this.image,
     required this.widget,
-    this.margin = const EdgeInsets.all(15),
+    this.margin = const EdgeInsets.all(10),
   }) : super(key: key);
   final Color? color;
   final double? borderRadius;

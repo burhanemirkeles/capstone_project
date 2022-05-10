@@ -12,19 +12,17 @@ class GoogleMapsMapState extends State<GoogleMapsMap> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(),
-            color: Colors.black,
-          ),
-          height: size.height * 0.4,
-          width: size.width * 0.9,
-          child: _googleMaps(),
-          //padding: const EdgeInsets.all(35),
-          //margin: const EdgeInsets.all(35),
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          color: const Color.fromRGBO(50, 179, 255, 1),
         ),
+        height: size.height * 0.3125,
+        width: size.width * 0.9275,
+        child: _googleMaps(),
+        //padding: const EdgeInsets.all(35),
+        //margin: const EdgeInsets.all(35),
       ),
     );
   }

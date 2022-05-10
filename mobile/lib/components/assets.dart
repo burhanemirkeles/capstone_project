@@ -2,6 +2,9 @@ class IconAssets {
   String chat = "assets/icons/chat.svg";
   String login = "assets/icons/login.svg";
   String signup = "assets/icons/signup.svg";
+  String densityVector = "assets/icons/densityVector.svg";
+  String homeVector = "assets/icons/homeVector.svg";
+  String relativesVector = "assets/icons/relativesVector.svg";
 }
 
 class ImageAssets {
@@ -15,5 +18,6 @@ class ImageAssets {
   String euIcon = "assets/images/euIcon.png";
   String informationIcon = "assets/images/informationIcon.png";
   String vaccineIcon = "assets/images/vaccineIcon.png";
+  String relativesIcon = "assets/images/relativesIcon.png";
 }
 //TODO: ADD THE RELEVANT ASSETS' PATHS AS ASSETNAMED STRINGS TO USE WITHOUT TYPO IN OTHER FILES

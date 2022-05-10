@@ -1,8 +1,4 @@
-import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
-import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
-import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
-//import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/constants';
 

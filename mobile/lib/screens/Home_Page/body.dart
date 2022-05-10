@@ -1,5 +1,6 @@
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/components/bottomNavigationBar.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
@@ -10,17 +11,43 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return Scaffold(
+      body: Background(
         child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _itemCardOfCoronaTest(),
-        _itemCardOfVaccination(),
-        _itemCardOfClinic(),
-        _itemCardOfEuInformation(),
-        _itemCardOfInformation(),
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Container(
+                child: _itemCardOfClinic(),
+                margin: const EdgeInsets.fromLTRB(0, 25, 0, 50),
+                width: 384,
+                height: 280,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(35),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _itemCardOfCoronaTest(),
+                _itemCardOfVaccination(),
+                _itemCardOfClinic(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _itemCardOfEuInformation(),
+                _itemCardOfInformation(),
+              ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
+    );
   }
 
   ItemCard _itemCardOfCoronaTest() {
@@ -86,5 +113,3 @@ class Body extends StatelessWidget {
     );
   }
 }
-
-//TODO: This file will contain the body of the home page viewed items.
