@@ -2,7 +2,7 @@
 
 import 'package:capstone_project/Constants.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_project/constants';
+
 import 'package:capstone_project/components/textFieldContainer.dart';
 
 class RoundedInputField extends StatelessWidget {
@@ -28,7 +28,7 @@ class RoundedInputField extends StatelessWidget {
       child: TextField(
         obscureText: isObscure,
         onChanged: onChanged,
-        cursorColor: const Color(0xFFF1E6FF),
+        cursorColor: Color.fromARGB(255, 0, 0, 0),
         decoration: InputDecoration(
           icon: Icon(
             icon,
@@ -38,7 +38,7 @@ class RoundedInputField extends StatelessWidget {
           border: InputBorder.none,
         ),
         controller: controller,
-        keyboardType: TextInputType.emailAddress,
+        //keyboardType: TextInputType.emailAddress,
       ),
     );
   }

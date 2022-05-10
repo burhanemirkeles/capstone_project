@@ -17,6 +17,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final textControllerEmail = TextEditingController();
   final textControllerPassword = TextEditingController();
+  final textControllerName = TextEditingController();
 
   @override
   void dispose() {
@@ -35,9 +36,7 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             _upperButtonContainer(context),
             _signupImage(size),
-            const SizedBox(
-              height: 22,
-            ),
+            _inputFieldForName(textControllerName),
             _inputFieldForEmail(textControllerEmail),
             _inputFieldForPassword(textControllerPassword),
             _signupButton(textControllerEmail, textControllerPassword, context),
@@ -58,7 +57,7 @@ Container _upperButtonContainer(BuildContext context) {
       },
     ),
     alignment: Alignment.topLeft,
-    padding: const EdgeInsets.fromLTRB(20, 0, 0, 70),
+    padding: const EdgeInsets.fromLTRB(20, 0, 0, 40),
   );
 }
 
@@ -68,6 +67,17 @@ Image _signupImage(Size size) {
     _imageName,
     //height: size.height * 0.35,
     width: size.width,
+  );
+}
+
+RoundedInputField _inputFieldForName(TextEditingController controller) {
+  String _hintText = "Name Surname";
+  return RoundedInputField(
+    isObscure: false,
+    hintText: _hintText,
+    onChanged: (value) {},
+    controller: controller,
+    icon: Icons.email,
   );
 }
 

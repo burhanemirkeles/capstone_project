@@ -7,3 +7,5 @@ var kHeadingTextStyle = GoogleFonts.rubik(
   fontSize: 24,
   fontWeight: FontWeight.normal,
 );
+const kPrimaryColor = Color(0xFF6F35A5);
+const kPrimaryLightColor = Color(0xFFF1E6FF);

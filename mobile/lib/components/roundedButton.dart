@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:capstone_project/Constants.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_project/constants';
 
 class RoundedButton extends StatelessWidget {
   final String text;

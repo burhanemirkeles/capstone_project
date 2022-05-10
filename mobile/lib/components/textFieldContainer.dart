@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import, file_names
 
+import 'package:capstone_project/Constants.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_project/constants';
 
 class TextFieldContainer extends StatelessWidget {
   final Widget child;

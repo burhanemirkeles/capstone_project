@@ -1,6 +1,6 @@
+import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_project/constants';
 
 void main() => runApp(const MyApp());
 
