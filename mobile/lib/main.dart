@@ -1,4 +1,4 @@
-import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/constants';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomePage(),
+      home: const WelcomeScreen(),
     );
   }
 }

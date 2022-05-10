@@ -4,13 +4,13 @@ import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
-import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+
 import 'package:capstone_project/Constants.dart';
+import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/components/assets.dart';
-
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -111,10 +111,10 @@ RoundedButton _loginButton(TextEditingController controllerEmail,
           
         }
         */
-      if ((controllerEmail.text == "ABCD") &&
+      if ((controllerEmail.text == "example") &&
           (controllerPassword.text == "1234")) {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
+          return MainScreen();
         }));
       } else {
         CustomizedAlertDialog(
