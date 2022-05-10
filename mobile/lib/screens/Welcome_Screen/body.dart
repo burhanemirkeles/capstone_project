@@ -6,7 +6,6 @@ import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:capstone_project/screens/Signup_Screen/signup_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../../components/backgroundForLanding.dart';
 
 class Body extends StatelessWidget {
