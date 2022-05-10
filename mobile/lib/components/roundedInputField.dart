@@ -28,11 +28,11 @@ class RoundedInputField extends StatelessWidget {
       child: TextField(
         obscureText: isObscure,
         onChanged: onChanged,
-        cursorColor: kPrimaryColor,
+        cursorColor: const Color(0xFFF1E6FF),
         decoration: InputDecoration(
           icon: Icon(
             icon,
-            color: kPrimaryColor,
+            color: const Color(0xFF6F35A5),
           ),
           hintText: hintText,
           border: InputBorder.none,
