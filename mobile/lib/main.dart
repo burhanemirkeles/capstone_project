@@ -1,6 +1,5 @@
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
-import 'package:capstone_project/screens/Relatives_Page/relatives_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

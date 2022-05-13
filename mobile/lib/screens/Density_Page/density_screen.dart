@@ -1,3 +1,4 @@
+import 'package:capstone_project/screens/Density_Page/body.dart';
 import 'package:flutter/material.dart';
 
 class DensityPage extends StatefulWidget {
@@ -10,8 +11,6 @@ class DensityPage extends StatefulWidget {
 class _DensityPageState extends State<DensityPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Density Page"),
-    );
+    return const Body();
   }
 }
