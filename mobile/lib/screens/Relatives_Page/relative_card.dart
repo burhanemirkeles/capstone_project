@@ -27,6 +27,7 @@ class RelativesCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.32),
         color: backgroundColor,
       ),
+      margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
         child: Column(
