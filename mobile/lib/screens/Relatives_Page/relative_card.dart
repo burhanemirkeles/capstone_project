@@ -17,11 +17,13 @@ class RelativesCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     const double widthCo =
         0.8792; //This coefficient calculated due to design file. Designed width/Screen width
+    const double widthRenew =
+        0.7998; //This width coefficient created due to a design error, container & cards has a intersection on top of secren when user slides up
     const double heightCo =
         0.10267; //This coefficient calculated due to design file. Designed height/Screen height
     return Container(
       height: size.height * heightCo,
-      width: size.width * widthCo,
+      width: size.width * widthRenew,
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: BorderRadius.circular(30.32),

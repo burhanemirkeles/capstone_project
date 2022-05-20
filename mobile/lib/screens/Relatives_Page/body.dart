@@ -39,7 +39,7 @@ class _BodyState extends State<Body> {
                       ),
                       RelativesCard(
                         relativeName: "Hülya Pamuk",
-                        covStatus: "naksd",
+                        covStatus: "Negative",
                       ),
                       RelativesCard(
                         relativeName: "Alp Pamuk",
