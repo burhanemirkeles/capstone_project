@@ -1,5 +1,11 @@
+// ignore_for_file: unused_import
+
 import 'package:capstone_project/Constants.dart';
-import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
+import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+import 'package:capstone_project/screens/Information_Page/information_page.dart';
+import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
+import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
+import 'package:capstone_project/screens/Relatives_Page/relatives_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const WelcomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

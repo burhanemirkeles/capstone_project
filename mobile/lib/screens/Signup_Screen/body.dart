@@ -105,7 +105,7 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
 
 RoundedButton _signupButton(TextEditingController controllerEmail,
     TextEditingController controllerPassword, BuildContext context) {
-  String _txtForButton = "SIGNUP";
+  String _txtForButton = "SIGN UP";
   return RoundedButton(
     text: _txtForButton,
     borderRadius: 16,

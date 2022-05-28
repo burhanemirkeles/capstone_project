@@ -99,7 +99,7 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
 
 RoundedButton _loginButton(TextEditingController controllerEmail,
     TextEditingController controllerPassword, BuildContext context) {
-  String _txtForButton = "Log in";
+  String _txtForButton = "Login";
   return RoundedButton(
     text: _txtForButton,
     onPress: () {

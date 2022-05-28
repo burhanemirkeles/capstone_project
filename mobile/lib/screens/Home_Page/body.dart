@@ -1,6 +1,9 @@
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/screens/EU_Health_Passport_WV_page/eu_health_passport.dart';
+import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
+import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
@@ -22,26 +25,17 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             Center(
               child: Container(
-                child: Container(
-                  child: const Center(
-                    child: Text(
-                      "Map view will be here!",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(style: BorderStyle.none),
-                    borderRadius: BorderRadius.circular(35),
-                  ),
-                ),
+                child: const GoogleMapsMap(),
                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 50),
+                padding: const EdgeInsets.all(4),
                 width: 384,
                 height: 280,
                 decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(35),
+                  border: Border.all(
+                    color: ItemCardConstants().clinicItemColor,
+                    width: 5,
+                  ),
+                  //borderRadius: BorderRadius.circular(35),
                 ),
               ),
             ),
@@ -106,7 +100,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfEuInformation() {
     return ItemCard(
-      routePage: const NewPage(),
+      routePage: const EuHealthPassportWebView(),
       image: Image.asset(ImageAssets().euIcon, alignment: Alignment.center),
       color: ItemCardConstants().euItemColor,
       widget: Text(
@@ -118,7 +112,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfInformation() {
     return ItemCard(
-      routePage: const NewPage(),
+      routePage: const InformationPage(),
       image: Image.asset(ImageAssets().informationIcon,
           alignment: Alignment.center),
       color: ItemCardConstants().informationItemColor,

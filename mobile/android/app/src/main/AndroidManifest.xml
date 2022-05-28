@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.capstone_project">
    <application
-        android:label="capstone_project"
+        android:label="Covid19 Vaccine Tracker"
         android:icon="@mipmap/ic_launcher">
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyDKKsyJIsQ67hXtcmeUbMKrTQYP2tV6mDg"/>

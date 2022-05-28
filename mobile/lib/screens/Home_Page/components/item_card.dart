@@ -11,7 +11,7 @@ class ItemCard extends StatelessWidget {
     required this.routePage,
     required this.image,
     required this.widget,
-    this.margin = const EdgeInsets.all(10),
+    this.margin = const EdgeInsets.all(8),
   }) : super(key: key);
   final Color? color;
   final double? borderRadius;
@@ -42,7 +42,7 @@ class ItemCard extends StatelessWidget {
             children: [
               image,
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               widget,
             ],

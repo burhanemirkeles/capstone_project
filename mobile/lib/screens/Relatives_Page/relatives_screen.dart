@@ -1,3 +1,4 @@
+import 'package:capstone_project/screens/Relatives_Page/body.dart';
 import 'package:flutter/material.dart';
 
 class RelativesPage extends StatefulWidget {
@@ -10,8 +11,6 @@ class RelativesPage extends StatefulWidget {
 class _RelativesPageState extends State<RelativesPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Relatives Page"),
-    );
+    return const Body();
   }
 }
