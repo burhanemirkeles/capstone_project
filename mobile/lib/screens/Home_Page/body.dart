@@ -1,5 +1,7 @@
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/screens/EU_Health_Passport_WV_page/eu_health_passport.dart';
+import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +25,7 @@ class _BodyState extends State<Body> {
             Center(
               child: Container(
                 child: Container(
-                  child: const Center(
-                    child: Text(
-                      "Map view will be here!",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                  child: const GoogleMapsMap(),
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.black,
@@ -106,7 +103,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfEuInformation() {
     return ItemCard(
-      routePage: const NewPage(),
+      routePage: const EuHealthPassportWebView(),
       image: Image.asset(ImageAssets().euIcon, alignment: Alignment.center),
       color: ItemCardConstants().euItemColor,
       widget: Text(
