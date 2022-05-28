@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             Center(
               child: Container(
-                //child: const GoogleMapsMap(),
+                child: const GoogleMapsMap(),
                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 50),
                 padding: const EdgeInsets.all(4),
                 width: 384,

@@ -1,3 +1,4 @@
+import 'package:capstone_project/screens/Home_Page/Map/map_for_density_page.dart';
 import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:flutter/material.dart';
 
