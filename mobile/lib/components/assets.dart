@@ -19,5 +19,9 @@ class ImageAssets {
   String informationIcon = "assets/images/informationIcon.png";
   String vaccineIcon = "assets/images/vaccineIcon.png";
   String relativesIcon = "assets/images/relativesIcon.png";
+  String informationPageIconOne = "assets/images/infoPageIconOne.png";
+  String informationPageIconTwo = "assets/images/infoPageIconTwo.png";
+  String informationPageIconThree = "assets/images/infoPageIconThree.png";
+  String informationPageIconFour = "assets/images/infoPageIconFour.png";
 }
 //TODO: ADD THE RELEVANT ASSETS' PATHS AS ASSETNAMED STRINGS TO USE WITHOUT TYPO IN OTHER FILES

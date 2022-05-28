@@ -9,7 +9,7 @@ class EuHealthPassportWebView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("EU Health Passport Information"),
+        title: const Text("EU Health Passport Information"),
       ),
       body: const WebView(
         initialUrl: euHealthPassportUrl,

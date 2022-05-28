@@ -2,6 +2,7 @@
 
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:capstone_project/screens/Relatives_Page/relatives_screen.dart';

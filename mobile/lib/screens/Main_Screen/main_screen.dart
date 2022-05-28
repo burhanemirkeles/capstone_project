@@ -1,6 +1,7 @@
 import 'package:capstone_project/custom_icons_icons.dart';
 import 'package:capstone_project/screens/Density_Page/density_screen.dart';
 import 'package:capstone_project/screens/Home_Page/home_screen.dart';
+
 import 'package:capstone_project/screens/Relatives_Page/relatives_screen.dart';
 import 'package:flutter/material.dart';
 
