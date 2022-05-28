@@ -24,21 +24,17 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             Center(
               child: Container(
-                child: Container(
-                  child: const GoogleMapsMap(),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(style: BorderStyle.none),
-                    borderRadius: BorderRadius.circular(35),
-                  ),
-                ),
+                child: const GoogleMapsMap(),
                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 50),
+                padding: const EdgeInsets.all(4),
                 width: 384,
                 height: 280,
                 decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(35),
+                  border:
+                      Border.all(color: ItemCardConstants().clinicItemColor),
+                  color: ItemCardConstants().clinicItemColor,
+
+                  //borderRadius: BorderRadius.circular(35),
                 ),
               ),
             ),

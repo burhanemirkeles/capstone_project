@@ -11,7 +11,7 @@ class GoogleMapsMap extends StatefulWidget {
 class GoogleMapsMapState extends State<GoogleMapsMap> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
     const CameraPosition _kLake = CameraPosition(
         bearing: 192.8334901395799,
         target: LatLng(37.43296265331129, -122.08832357078792),
