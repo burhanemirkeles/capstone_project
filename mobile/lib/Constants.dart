@@ -9,3 +9,5 @@ var kHeadingTextStyle = GoogleFonts.rubik(
 );
 const kPrimaryColor = Color(0xFF6F35A5);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
+const euHealthPassportUrl =
+    "https://ec.europa.eu/info/live-work-travel-eu/coronavirus-response/safe-covid-19-vaccines-europeans/eu-digital-covid-certificate_en";

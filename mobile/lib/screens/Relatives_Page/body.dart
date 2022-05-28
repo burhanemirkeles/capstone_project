@@ -23,7 +23,6 @@ class _BodyState extends State<Body> {
             Container(
               width: 384,
               height: 646,
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(30.32),
