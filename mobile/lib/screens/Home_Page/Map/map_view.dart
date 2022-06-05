@@ -14,15 +14,23 @@ class GoogleMapsMapState extends State<GoogleMapsMap> {
     //Size size = MediaQuery.of(context).size;
     const CameraPosition _kLake = CameraPosition(
         bearing: 192.8334901395799,
-        target: LatLng(37.43296265331129, -122.08832357078792),
+        target: LatLng(41.07122, 29.02321),
         tilt: 59.440717697143555,
         zoom: 19.151926040649414);
     return const Center(
       child: GoogleMap(
         initialCameraPosition: _kLake,
-        zoomControlsEnabled: true,
-        zoomGesturesEnabled: true,
+        mapType: MapType.normal,
+        tiltGesturesEnabled: false,
+        zoomControlsEnabled: false,
+        zoomGesturesEnabled: false,
         scrollGesturesEnabled: true,
+        buildingsEnabled: true,
+        compassEnabled: false,
+        rotateGesturesEnabled: false,
+        minMaxZoomPreference: MinMaxZoomPreference(16, 16),
+        indoorViewEnabled: false,
+        trafficEnabled: false,
       ),
     );
   }
