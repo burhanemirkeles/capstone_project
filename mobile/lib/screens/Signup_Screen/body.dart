@@ -5,6 +5,7 @@ import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -18,6 +19,7 @@ class _BodyState extends State<Body> {
   final textControllerEmail = TextEditingController();
   final textControllerPassword = TextEditingController();
   final textControllerName = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -39,7 +41,8 @@ class _BodyState extends State<Body> {
             _inputFieldForName(textControllerName),
             _inputFieldForEmail(textControllerEmail),
             _inputFieldForPassword(textControllerPassword),
-            _signupButton(textControllerEmail, textControllerPassword, context),
+            _signupButton(textControllerName, textControllerEmail,
+                textControllerPassword, context, _auth),
           ],
         ),
       ),
@@ -103,21 +106,31 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   );
 }
 
-RoundedButton _signupButton(TextEditingController controllerEmail,
-    TextEditingController controllerPassword, BuildContext context) {
+RoundedButton _signupButton(
+    TextEditingController controllerName,
+    TextEditingController controllerEmail,
+    TextEditingController controllerPassword,
+    BuildContext context,
+    FirebaseAuth _auth) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(
     text: _txtForButton,
     borderRadius: 16,
     textStyle: kHeadingTextStyle,
     color: const Color.fromRGBO(255, 113, 143, 1),
-    onPress: () {
-      // ignore: todo
-      //TODO 1: take text strings from email & password fields
-      // ignore: todo
-      //TODO 2: send the relevant data to service
-      // ignore: todo
-      //TODO 3: take to verification isVerified == true ? page->Nextpage : give error message to user
+    onPress: () async {
+      try {
+        String name = controllerName.text;
+        String email = controllerEmail.text;
+        String password = controllerPassword.text;
+
+        final newUser = await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+      } catch (e) {
+        print(e);
+      }
     },
   );
 }
