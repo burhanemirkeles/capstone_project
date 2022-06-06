@@ -9,6 +9,8 @@ class RoundedButton extends StatelessWidget {
   final Color color, textColor;
   final TextStyle? textStyle;
   final double? borderRadius;
+  //final double? width;
+
   const RoundedButton({
     key,
     required this.text,
@@ -17,6 +19,7 @@ class RoundedButton extends StatelessWidget {
     this.textColor = Colors.white,
     this.textStyle,
     this.borderRadius = 12,
+    //this.width = 160,
   }) : super(key: key);
 
   @override
@@ -47,7 +50,3 @@ class RoundedButton extends StatelessWidget {
     );
   }
 }
-/*
-TextStyle(
-            color: textColor, fontSize: 14, fontWeight: FontWeight.w500),
-            */

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, nullable_type_in_catch_clause, import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print, unused_import
 
 import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
@@ -6,11 +6,13 @@ import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 
 import 'package:capstone_project/Constants.dart';
+import 'package:capstone_project/screens/Login_Screen/login_logic.dart';
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/components/assets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final textControllerEmail = TextEditingController();
   final textControllerPassword = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -44,7 +47,8 @@ class _BodyState extends State<Body> {
             SizedBox(height: size.height * 0.03),
             _inputFieldForEmail(textControllerEmail),
             _inputFieldForPassword(textControllerPassword),
-            _loginButton(textControllerEmail, textControllerPassword, context),
+            _loginButton(
+                textControllerEmail, textControllerPassword, context, _auth),
           ],
         ),
       ),
@@ -78,6 +82,7 @@ Image _loginImage(Size size) {
 RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   String _hintText = "Your Email";
   return RoundedInputField(
+    inputType: TextInputType.emailAddress,
     isObscure: false,
     hintText: _hintText,
     onChanged: (value) {},
@@ -89,6 +94,7 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
 RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   String _hintText = "Your Password";
   return RoundedInputField(
+    inputType: TextInputType.text,
     isObscure: true,
     hintText: _hintText,
     onChanged: (value) {},
@@ -97,32 +103,16 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   );
 }
 
-RoundedButton _loginButton(TextEditingController controllerEmail,
-    TextEditingController controllerPassword, BuildContext context) {
+RoundedButton _loginButton(
+    TextEditingController controllerEmail,
+    TextEditingController controllerPassword,
+    BuildContext context,
+    FirebaseAuth _auth) {
   String _txtForButton = "Login";
   return RoundedButton(
     text: _txtForButton,
-    onPress: () {
-      //NOT USE PUSH ROUTE TO HOME PAGE !!!
-      //this logic is for only test
-      //main logic will be like:
-      /*onPress:(){
-          _sendEmailAndPasswordTextToServer() ? route to Home Page : _displayErrorMessage()
-          
-        }
-        */
-      if ((controllerEmail.text == "example") &&
-          (controllerPassword.text == "1234")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return MainScreen();
-        }));
-      } else {
-        CustomizedAlertDialog(
-          dialogTitle: "dialogTitle",
-          actions: <Widget>[],
-        );
-      }
-    }, //onPress
+    onPress: () async => await LoginLogic()
+        .loginLogic(controllerEmail, controllerPassword, context, _auth),
     textStyle: kHeadingTextStyle,
     color: Color.fromRGBO(255, 113, 143, 1),
   );

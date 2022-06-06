@@ -1,11 +1,21 @@
+// ignore_for_file: avoid_print, prefer_const_constructors, unused_element, unused_local_variable
+
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
+import 'package:capstone_project/components/textFieldContainer.dart';
+import 'package:capstone_project/model/vaccination_type.dart';
+
+import 'package:capstone_project/screens/Signup_Screen/signup_logic.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -18,6 +28,14 @@ class _BodyState extends State<Body> {
   final textControllerEmail = TextEditingController();
   final textControllerPassword = TextEditingController();
   final textControllerName = TextEditingController();
+  final textControllerVaccinationCount = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+
+  //FirebaseDatabase database = FirebaseDatabase.instance;
+  var database = FirebaseFirestore.instance;
+  DatabaseReference databaseRef = FirebaseDatabase.instance.ref("users/");
+
+  VaccinationTypeEnum vaccinationType = VaccinationTypeEnum.Sinovac;
 
   @override
   void dispose() {
@@ -34,15 +52,99 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _upperButtonContainer(context),
-            _signupImage(size),
+            // _upperButtonContainer(context),
+            //_signupImage(size),
             _inputFieldForName(textControllerName),
             _inputFieldForEmail(textControllerEmail),
+            TextFieldContainer(
+              child: Column(
+                children: [
+                  _textAreaOfVaccinationQuestion(),
+                  ListTile(
+                    title: Text(
+                      VaccinationTypeEnum.Sinovac.toShortString(),
+                      style: kWelcomeScreenTextStyle,
+                    ),
+                    leading: Radio<VaccinationTypeEnum>(
+                      value: VaccinationTypeEnum.Sinovac,
+                      groupValue: vaccinationType,
+                      onChanged: (VaccinationTypeEnum? value) {
+                        setState(
+                          () {
+                            vaccinationType = value!;
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      VaccinationTypeEnum.PfizerBiontech.toShortString(),
+                      style: kWelcomeScreenTextStyle,
+                    ),
+                    leading: Radio<VaccinationTypeEnum>(
+                        value: VaccinationTypeEnum.PfizerBiontech,
+                        groupValue: vaccinationType,
+                        onChanged: (VaccinationTypeEnum? value) {
+                          setState(() {
+                            vaccinationType = value!;
+                          });
+                        }),
+                  ),
+                  ListTile(
+                    title: Text(
+                      "Not Vaccinated",
+                      style: kWelcomeScreenTextStyle,
+                    ),
+                    leading: Radio<VaccinationTypeEnum>(
+                        value: VaccinationTypeEnum.NotVaccinated,
+                        groupValue: vaccinationType,
+                        onChanged: (VaccinationTypeEnum? value) {
+                          setState(() {
+                            vaccinationType = value!;
+                          });
+                        }),
+                  ),
+                ],
+              ),
+            ),
+            _howManyTimesVaccinated(
+                textControllerVaccinationCount, vaccinationType),
             _inputFieldForPassword(textControllerPassword),
-            _signupButton(textControllerEmail, textControllerPassword, context),
+            _signupButton(
+              textControllerName,
+              textControllerEmail,
+              textControllerPassword,
+              context,
+              _auth,
+              databaseRef,
+              database,
+              vaccinationType,
+              textControllerVaccinationCount,
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Row _textAreaOfVaccinationQuestion() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(
+          Icons.vaccines,
+          color: Color(0xFF6F35A5),
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        Text(
+          "Which vaccine did you get?",
+          style: kWelcomeScreenTextStyle,
+        ),
+      ],
     );
   }
 }
@@ -65,7 +167,7 @@ Image _signupImage(Size size) {
   String _imageName = ImageAssets().login;
   return Image.asset(
     _imageName,
-    //height: size.height * 0.35,
+    height: size.height * 0.3,
     width: size.width,
   );
 }
@@ -73,17 +175,19 @@ Image _signupImage(Size size) {
 RoundedInputField _inputFieldForName(TextEditingController controller) {
   String _hintText = "Name Surname";
   return RoundedInputField(
+    inputType: TextInputType.text,
     isObscure: false,
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
-    icon: Icons.email,
+    icon: Icons.perm_identity_outlined,
   );
 }
 
 RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   String _hintText = "Your Email";
   return RoundedInputField(
+    inputType: TextInputType.emailAddress,
     isObscure: false,
     hintText: _hintText,
     onChanged: (value) {},
@@ -92,9 +196,36 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   );
 }
 
+RoundedInputField _howManyTimesVaccinated(
+    TextEditingController controller, VaccinationTypeEnum vaccinationType) {
+  if (vaccinationType == VaccinationTypeEnum.NotVaccinated) {
+    controller.clear();
+
+    return RoundedInputField(
+      hintText: "0",
+      onChanged: (value) {},
+      isObscure: false,
+      icon: Icons.query_stats,
+      inputType: TextInputType.number,
+      isEnabled: false,
+    );
+  } else {
+    return RoundedInputField(
+      inputType: TextInputType.number,
+      hintText: "How many times vaccinated",
+      onChanged: (value) {},
+      isObscure: false,
+      icon: Icons.query_stats,
+      controller: controller,
+    );
+  }
+}
+
 RoundedInputField _inputFieldForPassword(TextEditingController controller) {
-  String _hintText = "Your Password";
+  String _hintText = "Create Your Password";
+
   return RoundedInputField(
+    inputType: TextInputType.text,
     isObscure: true,
     hintText: _hintText,
     onChanged: (value) {},
@@ -103,21 +234,30 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   );
 }
 
-RoundedButton _signupButton(TextEditingController controllerEmail,
-    TextEditingController controllerPassword, BuildContext context) {
+RoundedButton _signupButton(
+    TextEditingController controllerName,
+    TextEditingController controllerEmail,
+    TextEditingController controllerPassword,
+    BuildContext context,
+    FirebaseAuth _auth,
+    DatabaseReference databaseReference,
+    FirebaseFirestore database,
+    VaccinationTypeEnum vaccinationType,
+    TextEditingController controllerVaccinationCount) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(
     text: _txtForButton,
     borderRadius: 16,
     textStyle: kHeadingTextStyle,
     color: const Color.fromRGBO(255, 113, 143, 1),
-    onPress: () {
-      // ignore: todo
-      //TODO 1: take text strings from email & password fields
-      // ignore: todo
-      //TODO 2: send the relevant data to service
-      // ignore: todo
-      //TODO 3: take to verification isVerified == true ? page->Nextpage : give error message to user
-    },
+    onPress: () async => await SignupLogic().signUp(
+      controllerName,
+      controllerEmail,
+      controllerPassword,
+      _auth,
+      database,
+      vaccinationType,
+      controllerVaccinationCount,
+    ),
   );
 }

@@ -13,7 +13,7 @@ class CircularButton extends StatelessWidget {
       child: const Icon(Icons.arrow_back_ios),
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const CircleBorder()),
-        padding: MaterialStateProperty.all(const EdgeInsets.all(20)),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(14)),
         backgroundColor:
             MaterialStateProperty.all(const Color.fromRGBO(255, 113, 143, 1)),
         overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
