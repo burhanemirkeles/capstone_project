@@ -1,3 +1,4 @@
+import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/customTextLabelContainer.dart';
@@ -9,6 +10,7 @@ import 'package:capstone_project/screens/Information_Page/information_page.dart'
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -34,7 +36,7 @@ class _BodyState extends State<Body> {
                       Row(
                         children: const [
                           CustomTextLabelContainer(
-                            childWidgetOne: Text("Location:"),
+                            childWidgetOne: Text("Location: "),
                             childWidgetTwo: Text("Besiktas"),
                           ),
                           CustomTextLabelContainer(
