@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, nullable_type_in_catch_clause, import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, nullable_type_in_catch_clause, import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print, unused_import
 
 import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
@@ -48,22 +48,6 @@ class _BodyState extends State<Body> {
             _inputFieldForPassword(textControllerPassword),
             _loginButton(
                 textControllerEmail, textControllerPassword, context, _auth),
-            /*RoundedButton(
-              text: "ZORT",
-              onPress: () async {
-                try {
-                  String email = textControllerEmail.text;
-                  String password = textControllerPassword.text;
-
-                  final newUser = await _auth.createUserWithEmailAndPassword(
-                    email: email,
-                    password: password,
-                  );
-                } catch (e) {
-                  print(e);
-                }
-              },
-            )*/
           ],
         ),
       ),
@@ -139,27 +123,6 @@ RoundedButton _loginButton(
         print(e);
       }
     },
-    /*onPress: () {
-      //NOT USE PUSH ROUTE TO HOME PAGE !!!
-      //this logic is for only test
-      //main logic will be like:
-      /*onPress:(){
-          _sendEmailAndPasswordTextToServer() ? route to Home Page : _displayErrorMessage()
-          
-        }
-        */
-      if ((controllerEmail.text == "example") &&
-          (controllerPassword.text == "1234")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return MainScreen();
-        }));
-      } else {
-        CustomizedAlertDialog(
-          dialogTitle: "dialogTitle",
-          actions: <Widget>[],
-        );
-      }
-    },*/ //onPress
     textStyle: kHeadingTextStyle,
     color: Color.fromRGBO(255, 113, 143, 1),
   );

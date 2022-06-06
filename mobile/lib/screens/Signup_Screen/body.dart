@@ -7,6 +7,7 @@ import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class _BodyState extends State<Body> {
   final textControllerName = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
-  FirebaseDatabase database = FirebaseDatabase.instance;
+  //FirebaseDatabase database = FirebaseDatabase.instance;
+  var database = FirebaseFirestore.instance;
   DatabaseReference databaseRef = FirebaseDatabase.instance.ref("users/");
 
   @override
@@ -53,8 +55,8 @@ class _BodyState extends State<Body> {
               textControllerPassword,
               context,
               _auth,
-              database,
               databaseRef,
+              database,
             ),
           ],
         ),
@@ -81,7 +83,7 @@ Image _signupImage(Size size) {
   String _imageName = ImageAssets().login;
   return Image.asset(
     _imageName,
-    //height: size.height * 0.35,
+    height: size.height * 0.3,
     width: size.width,
   );
 }
@@ -93,7 +95,7 @@ RoundedInputField _inputFieldForName(TextEditingController controller) {
     hintText: _hintText,
     onChanged: (value) {},
     controller: controller,
-    icon: Icons.email,
+    icon: Icons.perm_identity_outlined,
   );
 }
 
@@ -125,8 +127,8 @@ RoundedButton _signupButton(
   TextEditingController controllerPassword,
   BuildContext context,
   FirebaseAuth _auth,
-  FirebaseDatabase db,
   DatabaseReference databaseReference,
+  FirebaseFirestore database,
 ) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(
@@ -145,10 +147,14 @@ RoundedButton _signupButton(
           password: password,
         );
         print("1st step completed");
-        await databaseReference.set({
+        final user = <String, dynamic>{
           "name": name,
-          "mail": email,
-        });
+          "email": email,
+          "born": 1815
+        };
+
+        // Add a new document with a generated ID
+        await database.collection("users").doc(name).set(user);
         print("2nd step completed");
       } catch (e) {
         print(e);
