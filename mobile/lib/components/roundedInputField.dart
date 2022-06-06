@@ -11,6 +11,7 @@ class RoundedInputField extends StatelessWidget {
   final bool isObscure;
   final TextEditingController? controller;
   final Widget? child;
+  final TextInputType inputType;
   const RoundedInputField(
       {Key? key,
       required this.hintText,
@@ -18,13 +19,15 @@ class RoundedInputField extends StatelessWidget {
       required this.onChanged,
       required this.isObscure,
       this.controller,
-      this.child})
+      this.child,
+      required this.inputType})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
+        keyboardType: inputType,
         obscureText: isObscure,
         onChanged: onChanged,
         cursorColor: const Color.fromARGB(255, 0, 0, 0),

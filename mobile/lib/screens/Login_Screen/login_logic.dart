@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,9 +11,14 @@ class LoginLogic {
       final user = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       if (user != null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return MainScreen();
-        }));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const MainScreen();
+            },
+          ),
+        );
       }
     } catch (e) {
       print(e);

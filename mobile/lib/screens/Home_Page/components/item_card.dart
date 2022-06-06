@@ -55,6 +55,3 @@ class ItemCard extends StatelessWidget {
         });
   }
 }
-
-//TODO: design an item card for homepage that will direct to user to relevant page
-//itemcard will return a gestureDetector

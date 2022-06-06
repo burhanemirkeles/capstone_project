@@ -82,6 +82,7 @@ Image _loginImage(Size size) {
 RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   String _hintText = "Your Email";
   return RoundedInputField(
+    inputType: TextInputType.emailAddress,
     isObscure: false,
     hintText: _hintText,
     onChanged: (value) {},
@@ -93,6 +94,7 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
 RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   String _hintText = "Your Password";
   return RoundedInputField(
+    inputType: TextInputType.text,
     isObscure: true,
     hintText: _hintText,
     onChanged: (value) {},
