@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, nullable_type_in_catch_clause, import_of_legacy_library_into_null_safe
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, nullable_type_in_catch_clause, import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print
 
 import 'package:capstone_project/components/alertDialogPopup.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
@@ -124,7 +124,21 @@ RoundedButton _loginButton(
   String _txtForButton = "Login";
   return RoundedButton(
     text: _txtForButton,
-    onPress: () async {},
+    onPress: () async {
+      String email = controllerEmail.text;
+      String password = controllerPassword.text;
+      try {
+        final user = await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        if (user != null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return MainScreen();
+          }));
+        }
+      } catch (e) {
+        print(e);
+      }
+    },
     /*onPress: () {
       //NOT USE PUSH ROUTE TO HOME PAGE !!!
       //this logic is for only test

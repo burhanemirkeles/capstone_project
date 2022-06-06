@@ -7,6 +7,7 @@ import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:capstone_project/screens/Relatives_Page/relatives_screen.dart';
 import 'package:capstone_project/screens/Signup_Screen/signup_screen.dart';
+import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const SignupScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
