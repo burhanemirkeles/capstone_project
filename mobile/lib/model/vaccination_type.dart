@@ -1,12 +1,12 @@
 // ignore_for_file: constant_identifier_names
 
-enum VaccinationType {
+enum VaccinationTypeEnum {
   Sinovac,
   PfizerBiontech,
   NotVaccinated,
 }
 
-extension ParseToString on VaccinationType {
+extension ParseToString on VaccinationTypeEnum {
   String toShortString() {
     return toString().split('.').last;
   }

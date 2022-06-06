@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_const_constructors
+// ignore_for_file: avoid_print, prefer_const_constructors, unused_element, unused_local_variable
 
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
   var database = FirebaseFirestore.instance;
   DatabaseReference databaseRef = FirebaseDatabase.instance.ref("users/");
 
-  VaccinationType vaccinationType = VaccinationType.Sinovac;
+  VaccinationTypeEnum vaccinationType = VaccinationTypeEnum.Sinovac;
 
   @override
   void dispose() {
@@ -62,13 +62,13 @@ class _BodyState extends State<Body> {
                   _textAreaOfVaccinationQuestion(),
                   ListTile(
                     title: Text(
-                      VaccinationType.Sinovac.toShortString(),
+                      VaccinationTypeEnum.Sinovac.toShortString(),
                       style: kWelcomeScreenTextStyle,
                     ),
-                    leading: Radio<VaccinationType>(
-                      value: VaccinationType.Sinovac,
+                    leading: Radio<VaccinationTypeEnum>(
+                      value: VaccinationTypeEnum.Sinovac,
                       groupValue: vaccinationType,
-                      onChanged: (VaccinationType? value) {
+                      onChanged: (VaccinationTypeEnum? value) {
                         setState(
                           () {
                             vaccinationType = value!;
@@ -79,13 +79,13 @@ class _BodyState extends State<Body> {
                   ),
                   ListTile(
                     title: Text(
-                      VaccinationType.PfizerBiontech.toShortString(),
+                      VaccinationTypeEnum.PfizerBiontech.toShortString(),
                       style: kWelcomeScreenTextStyle,
                     ),
-                    leading: Radio<VaccinationType>(
-                        value: VaccinationType.PfizerBiontech,
+                    leading: Radio<VaccinationTypeEnum>(
+                        value: VaccinationTypeEnum.PfizerBiontech,
                         groupValue: vaccinationType,
-                        onChanged: (VaccinationType? value) {
+                        onChanged: (VaccinationTypeEnum? value) {
                           setState(() {
                             vaccinationType = value!;
                           });
@@ -96,10 +96,10 @@ class _BodyState extends State<Body> {
                       "Not Vaccinated",
                       style: kWelcomeScreenTextStyle,
                     ),
-                    leading: Radio<VaccinationType>(
-                        value: VaccinationType.NotVaccinated,
+                    leading: Radio<VaccinationTypeEnum>(
+                        value: VaccinationTypeEnum.NotVaccinated,
                         groupValue: vaccinationType,
-                        onChanged: (VaccinationType? value) {
+                        onChanged: (VaccinationTypeEnum? value) {
                           setState(() {
                             vaccinationType = value!;
                           });
@@ -197,8 +197,8 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
 }
 
 RoundedInputField _howManyTimesVaccinated(
-    TextEditingController controller, VaccinationType vaccinationType) {
-  if (vaccinationType == VaccinationType.NotVaccinated) {
+    TextEditingController controller, VaccinationTypeEnum vaccinationType) {
+  if (vaccinationType == VaccinationTypeEnum.NotVaccinated) {
     controller.clear();
 
     return RoundedInputField(
@@ -242,7 +242,7 @@ RoundedButton _signupButton(
     FirebaseAuth _auth,
     DatabaseReference databaseReference,
     FirebaseFirestore database,
-    VaccinationType vaccinationType,
+    VaccinationTypeEnum vaccinationType,
     TextEditingController controllerVaccinationCount) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(

@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names
 
+import 'package:capstone_project/model/vaccination_type.dart';
+import 'package:flutter/material.dart';
+
 class SignupLogic {
   signUp(
     controllerName,
@@ -15,19 +18,14 @@ class SignupLogic {
       String email = controllerEmail.text;
       String password = controllerPassword.text;
       String vaccinationType = VaccinationType.toString().split('.').last;
-      //int? vaccinationCount = (controllerVaccinationCount.text == null
-      //   ? null
-      //    : int.parse(controllerVaccinationCount.text));
 
       int vaccinationCount;
-      if (vaccinationType == "NotVaccinated") {
+      if (vaccinationType ==
+          VaccinationTypeEnum.NotVaccinated.toShortString()) {
         vaccinationCount = 0;
       } else {
         vaccinationCount = int.parse(controllerVaccinationCount.text);
       }
-      //int vaccinationCount = int.parse(controllerVaccinationCount.text);
-
-      // int vaccinationCount = ;
 
       final newUser = await _auth.createUserWithEmailAndPassword(
         email: email,
