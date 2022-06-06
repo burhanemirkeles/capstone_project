@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names
 
 import 'package:capstone_project/model/vaccination_type.dart';
-import 'package:flutter/material.dart';
 
 class SignupLogic {
   signUp(

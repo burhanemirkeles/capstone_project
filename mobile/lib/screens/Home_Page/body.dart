@@ -1,5 +1,7 @@
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/components/customTextLabelContainer.dart';
+import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/EU_Health_Passport_WV_page/eu_health_passport.dart';
 import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
@@ -25,7 +27,50 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             Center(
               child: Container(
-                child: const GoogleMapsMap(),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: const [
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text("Location:"),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text(""),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text("Location:"),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text(""),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text("Location:"),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                          CustomTextLabelContainer(
+                            childWidgetOne: Text(""),
+                            childWidgetTwo: Text("Besiktas"),
+                          ),
+                        ],
+                      ),
+                      RoundedButton(text: "Get My Info", onPress: () {}),
+                    ],
+                  ),
+                ), //const GoogleMapsMap(),
                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 50),
                 padding: const EdgeInsets.all(4),
                 width: 384,
