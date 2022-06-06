@@ -2,10 +2,8 @@
 
 enum VaccinationType {
   Sinovac,
-  Biontech,
-  Turkovac,
-  A,
-  B,
+  PfizerBiontech,
+  NotVaccinated,
 }
 
 extension ParseToString on VaccinationType {

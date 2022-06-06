@@ -14,8 +14,18 @@ class SignupLogic {
       String name = controllerName.text;
       String email = controllerEmail.text;
       String password = controllerPassword.text;
-      String vaccinationType = VaccinationType.toString();
-      int vaccinationCount = int.parse(controllerVaccinationCount.text);
+      String vaccinationType = VaccinationType.toString().split('.').last;
+      //int? vaccinationCount = (controllerVaccinationCount.text == null
+      //   ? null
+      //    : int.parse(controllerVaccinationCount.text));
+
+      int vaccinationCount;
+      if (vaccinationType == "NotVaccinated") {
+        vaccinationCount = 0;
+      } else {
+        vaccinationCount = int.parse(controllerVaccinationCount.text);
+      }
+      //int vaccinationCount = int.parse(controllerVaccinationCount.text);
 
       // int vaccinationCount = ;
 
@@ -33,7 +43,7 @@ class SignupLogic {
       };
 
       // Add a new document with a generated ID
-      await database.collection("users").doc(name).set(user);
+      await database.collection("users").doc(email).set(user);
       print("2nd step completed");
     } catch (e) {
       print(e);

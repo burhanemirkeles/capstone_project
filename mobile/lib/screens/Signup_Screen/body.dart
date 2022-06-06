@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
   var database = FirebaseFirestore.instance;
   DatabaseReference databaseRef = FirebaseDatabase.instance.ref("users/");
 
-  VaccinationType vaccinationType = VaccinationType.A;
+  VaccinationType vaccinationType = VaccinationType.Sinovac;
 
   @override
   void dispose() {
@@ -61,7 +61,10 @@ class _BodyState extends State<Body> {
                 children: [
                   _textAreaOfVaccinationQuestion(),
                   ListTile(
-                    title: Text(VaccinationType.Sinovac.toShortString()),
+                    title: Text(
+                      VaccinationType.Sinovac.toShortString(),
+                      style: kWelcomeScreenTextStyle,
+                    ),
                     leading: Radio<VaccinationType>(
                       value: VaccinationType.Sinovac,
                       groupValue: vaccinationType,
@@ -75,9 +78,26 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                   ListTile(
-                    title: Text(VaccinationType.Biontech.toShortString()),
+                    title: Text(
+                      VaccinationType.PfizerBiontech.toShortString(),
+                      style: kWelcomeScreenTextStyle,
+                    ),
                     leading: Radio<VaccinationType>(
-                        value: VaccinationType.Biontech,
+                        value: VaccinationType.PfizerBiontech,
+                        groupValue: vaccinationType,
+                        onChanged: (VaccinationType? value) {
+                          setState(() {
+                            vaccinationType = value!;
+                          });
+                        }),
+                  ),
+                  ListTile(
+                    title: Text(
+                      "Not Vaccinated",
+                      style: kWelcomeScreenTextStyle,
+                    ),
+                    leading: Radio<VaccinationType>(
+                        value: VaccinationType.NotVaccinated,
                         groupValue: vaccinationType,
                         onChanged: (VaccinationType? value) {
                           setState(() {
@@ -88,7 +108,8 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            _howManyTimesVaccinated(textControllerVaccinationCount),
+            _howManyTimesVaccinated(
+                textControllerVaccinationCount, vaccinationType),
             _inputFieldForPassword(textControllerPassword),
             _signupButton(
               textControllerName,
@@ -121,10 +142,7 @@ class _BodyState extends State<Body> {
         ),
         Text(
           "Which vaccine did you get?",
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            letterSpacing: 0.2,
-          ),
+          style: kWelcomeScreenTextStyle,
         ),
       ],
     );
@@ -178,19 +196,34 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   );
 }
 
-RoundedInputField _howManyTimesVaccinated(TextEditingController controller) {
-  return RoundedInputField(
-    inputType: TextInputType.number,
-    hintText: "How many times vaccinated",
-    onChanged: (value) {},
-    isObscure: false,
-    icon: Icons.query_stats,
-    controller: controller,
-  );
+RoundedInputField _howManyTimesVaccinated(
+    TextEditingController controller, VaccinationType vaccinationType) {
+  if (vaccinationType == VaccinationType.NotVaccinated) {
+    controller.clear();
+
+    return RoundedInputField(
+      hintText: "0",
+      onChanged: (value) {},
+      isObscure: false,
+      icon: Icons.query_stats,
+      inputType: TextInputType.number,
+      isEnabled: false,
+    );
+  } else {
+    return RoundedInputField(
+      inputType: TextInputType.number,
+      hintText: "How many times vaccinated",
+      onChanged: (value) {},
+      isObscure: false,
+      icon: Icons.query_stats,
+      controller: controller,
+    );
+  }
 }
 
 RoundedInputField _inputFieldForPassword(TextEditingController controller) {
   String _hintText = "Create Your Password";
+
   return RoundedInputField(
     inputType: TextInputType.text,
     isObscure: true,
