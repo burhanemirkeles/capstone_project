@@ -6,6 +6,7 @@ import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
+import 'package:capstone_project/screens/Signup_Screen/signup_logic.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -136,29 +137,7 @@ RoundedButton _signupButton(
     borderRadius: 16,
     textStyle: kHeadingTextStyle,
     color: const Color.fromRGBO(255, 113, 143, 1),
-    onPress: () async {
-      try {
-        String name = controllerName.text;
-        String email = controllerEmail.text;
-        String password = controllerPassword.text;
-
-        final newUser = await _auth.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-        print("1st step completed");
-        final user = <String, dynamic>{
-          "name": name,
-          "email": email,
-          "born": 1815
-        };
-
-        // Add a new document with a generated ID
-        await database.collection("users").doc(name).set(user);
-        print("2nd step completed");
-      } catch (e) {
-        print(e);
-      }
-    },
+    onPress: () async => await SignupLogic().signUp(
+        controllerName, controllerEmail, controllerPassword, _auth, database),
   );
 }

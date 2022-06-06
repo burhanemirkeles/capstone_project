@@ -6,6 +6,7 @@ import 'package:capstone_project/components/circularButton.dart';
 import 'package:capstone_project/components/roundedButton.dart';
 
 import 'package:capstone_project/Constants.dart';
+import 'package:capstone_project/screens/Login_Screen/login_logic.dart';
 import 'package:capstone_project/screens/Main_Screen/main_screen.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -108,21 +109,8 @@ RoundedButton _loginButton(
   String _txtForButton = "Login";
   return RoundedButton(
     text: _txtForButton,
-    onPress: () async {
-      String email = controllerEmail.text;
-      String password = controllerPassword.text;
-      try {
-        final user = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-        if (user != null) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return MainScreen();
-          }));
-        }
-      } catch (e) {
-        print(e);
-      }
-    },
+    onPress: () async => await LoginLogic()
+        .loginLogic(controllerEmail, controllerPassword, context, _auth),
     textStyle: kHeadingTextStyle,
     color: Color.fromRGBO(255, 113, 143, 1),
   );
