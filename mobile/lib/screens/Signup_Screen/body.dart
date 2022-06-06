@@ -28,6 +28,7 @@ class _BodyState extends State<Body> {
   final textControllerEmail = TextEditingController();
   final textControllerPassword = TextEditingController();
   final textControllerName = TextEditingController();
+  final textControllerVaccinationCount = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
   //FirebaseDatabase database = FirebaseDatabase.instance;
@@ -87,7 +88,7 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            _howManyTimesVaccinated(),
+            _howManyTimesVaccinated(textControllerVaccinationCount),
             _inputFieldForPassword(textControllerPassword),
             _signupButton(
               textControllerName,
@@ -98,6 +99,7 @@ class _BodyState extends State<Body> {
               databaseRef,
               database,
               vaccinationType,
+              textControllerVaccinationCount,
             ),
           ],
         ),
@@ -176,13 +178,14 @@ RoundedInputField _inputFieldForEmail(TextEditingController controller) {
   );
 }
 
-RoundedInputField _howManyTimesVaccinated() {
+RoundedInputField _howManyTimesVaccinated(TextEditingController controller) {
   return RoundedInputField(
     inputType: TextInputType.number,
     hintText: "How many times vaccinated",
     onChanged: (value) {},
     isObscure: false,
     icon: Icons.query_stats,
+    controller: controller,
   );
 }
 
@@ -199,22 +202,29 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
 }
 
 RoundedButton _signupButton(
-  TextEditingController controllerName,
-  TextEditingController controllerEmail,
-  TextEditingController controllerPassword,
-  BuildContext context,
-  FirebaseAuth _auth,
-  DatabaseReference databaseReference,
-  FirebaseFirestore database,
-  VaccinationType vaccinationType,
-) {
+    TextEditingController controllerName,
+    TextEditingController controllerEmail,
+    TextEditingController controllerPassword,
+    BuildContext context,
+    FirebaseAuth _auth,
+    DatabaseReference databaseReference,
+    FirebaseFirestore database,
+    VaccinationType vaccinationType,
+    TextEditingController controllerVaccinationCount) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(
     text: _txtForButton,
     borderRadius: 16,
     textStyle: kHeadingTextStyle,
     color: const Color.fromRGBO(255, 113, 143, 1),
-    onPress: () async => await SignupLogic().signUp(controllerName,
-        controllerEmail, controllerPassword, _auth, database, vaccinationType),
+    onPress: () async => await SignupLogic().signUp(
+      controllerName,
+      controllerEmail,
+      controllerPassword,
+      _auth,
+      database,
+      vaccinationType,
+      controllerVaccinationCount,
+    ),
   );
 }

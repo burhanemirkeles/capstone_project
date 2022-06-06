@@ -1,13 +1,23 @@
 // ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names
 
 class SignupLogic {
-  signUp(controllerName, controllerEmail, controllerPassword, _auth, database,
-      VaccinationType) async {
+  signUp(
+    controllerName,
+    controllerEmail,
+    controllerPassword,
+    _auth,
+    database,
+    VaccinationType,
+    controllerVaccinationCount,
+  ) async {
     try {
       String name = controllerName.text;
       String email = controllerEmail.text;
       String password = controllerPassword.text;
       String vaccinationType = VaccinationType.toString();
+      int vaccinationCount = int.parse(controllerVaccinationCount.text);
+
+      // int vaccinationCount = ;
 
       final newUser = await _auth.createUserWithEmailAndPassword(
         email: email,
@@ -19,6 +29,7 @@ class SignupLogic {
         "name": name,
         "email": email,
         "vaccination type": vaccinationType,
+        "vaccination count": vaccinationCount,
       };
 
       // Add a new document with a generated ID
