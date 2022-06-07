@@ -8,6 +8,7 @@ import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
+import 'package:capstone_project/screens/Vaccination_Page/vaccination_screen.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
 import 'package:google_fonts/google_fonts.dart';
@@ -69,7 +70,10 @@ class _BodyState extends State<Body> {
                           ),
                         ],
                       ),
-                      RoundedButton(text: "Get My Info", onPress: () {}),
+                      RoundedButton(
+                        text: "Get My Info",
+                        onPress: () {},
+                      ),
                     ],
                   ),
                 ), //const GoogleMapsMap(),
@@ -121,7 +125,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfVaccination() {
     return ItemCard(
-      routePage: const NewPage(),
+      routePage: const VaccinationPage(),
       image:
           Image.asset(ImageAssets().vaccineIcon, alignment: Alignment.center),
       color: ItemCardConstants().vaccinationItemColor,

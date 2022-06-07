@@ -9,6 +9,7 @@ class RoundedButton extends StatelessWidget {
   final Color color, textColor;
   final TextStyle? textStyle;
   final double? borderRadius;
+  final double? widthMultiplier;
   //final double? width;
 
   const RoundedButton({
@@ -19,6 +20,7 @@ class RoundedButton extends StatelessWidget {
     this.textColor = Colors.white,
     this.textStyle,
     this.borderRadius = 12,
+    this.widthMultiplier = 0.8,
     //this.width = 160,
   }) : super(key: key);
 
@@ -27,7 +29,7 @@ class RoundedButton extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      width: size.width * 0.8,
+      width: size.width * widthMultiplier!,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius!),
         child: newElevatedButton(),
