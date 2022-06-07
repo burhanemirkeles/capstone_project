@@ -1,9 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:capstone_project/Constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextLabelContainer extends StatefulWidget {
-  final Widget childWidgetOne;
-  final Widget childWidgetTwo;
+  final Widget? childWidgetOne;
+  final Widget? childWidgetTwo;
   const CustomTextLabelContainer({
     Key? key,
     required this.childWidgetOne,
@@ -22,7 +24,7 @@ class _CustomTextLabelContainerState extends State<CustomTextLabelContainer> {
       alignment: Alignment.center,
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       padding: const EdgeInsets.all(15),
-      width: 160,
+      //width: 160,
       height: 50,
       decoration: BoxDecoration(
         color: kPrimaryLightColor,
@@ -31,8 +33,8 @@ class _CustomTextLabelContainerState extends State<CustomTextLabelContainer> {
       child: Center(
         child: Row(
           children: [
-            widget.childWidgetOne,
-            widget.childWidgetTwo,
+            widget.childWidgetOne!,
+            widget.childWidgetTwo!,
           ],
         ),
       ),

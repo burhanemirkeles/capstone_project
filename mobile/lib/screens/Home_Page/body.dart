@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, avoid_print
+
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
@@ -8,8 +10,10 @@ import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
+import 'package:capstone_project/services/location.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
@@ -20,6 +24,11 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  Location location = Location();
+  String lat = " ";
+  String lon = " ";
+  String cityName = " ";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +43,10 @@ class _BodyState extends State<Body> {
                   child: Column(
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           CustomTextLabelContainer(
-                            childWidgetOne: Text("Location: "),
-                            childWidgetTwo: Text("Besiktas"),
-                          ),
-                          CustomTextLabelContainer(
-                            childWidgetOne: Text(""),
-                            childWidgetTwo: Text("Besiktas"),
+                            childWidgetOne: const Text("Location: "),
+                            childWidgetTwo: Text(lat + " " + lon),
                           ),
                         ],
                       ),
@@ -69,7 +74,17 @@ class _BodyState extends State<Body> {
                           ),
                         ],
                       ),
-                      RoundedButton(text: "Get My Info", onPress: () {}),
+                      RoundedButton(
+                        text: "Get My Info",
+                        onPress: () async {
+                          await location.getCurrentLocation();
+
+                          setState(() {
+                            lat = location.latitude.toString().substring(0, 8);
+                            lon = location.longitude.toString().substring(0, 8);
+                          });
+                        },
+                      ),
                     ],
                   ),
                 ), //const GoogleMapsMap(),
