@@ -1,17 +1,20 @@
+// ignore_for_file: unused_import, avoid_print, prefer_const_constructors
+
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/customTextLabelContainer.dart';
 import 'package:capstone_project/components/roundedButton.dart';
-import 'package:capstone_project/screens/Corona_Test_Page/coronaTestScreen.dart';
 import 'package:capstone_project/screens/EU_Health_Passport_WV_page/eu_health_passport.dart';
 import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
-import 'package:capstone_project/screens/Vaccination_Page/vaccination_screen.dart';
+import 'package:capstone_project/services/location.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
@@ -22,6 +25,14 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  Location location = Location();
+  String lat = " ";
+  String lon = " ";
+  String cityName = " ";
+  String vaccineInfo = " ";
+
+  var database = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,23 +50,15 @@ class _BodyState extends State<Body> {
                         children: const [
                           CustomTextLabelContainer(
                             childWidgetOne: Text("Location: "),
-                            childWidgetTwo: Text("Besiktas"),
-                          ),
-                          CustomTextLabelContainer(
-                            childWidgetOne: Text(""),
-                            childWidgetTwo: Text("Besiktas"),
+                            childWidgetTwo: Text(""),
                           ),
                         ],
                       ),
                       Row(
-                        children: const [
+                        children: [
                           CustomTextLabelContainer(
-                            childWidgetOne: Text("Location:"),
-                            childWidgetTwo: Text("Besiktas"),
-                          ),
-                          CustomTextLabelContainer(
-                            childWidgetOne: Text(""),
-                            childWidgetTwo: Text("Besiktas"),
+                            childWidgetOne: Text("Vaccination: "),
+                            childWidgetTwo: Text(vaccineInfo),
                           ),
                         ],
                       ),
@@ -73,7 +76,11 @@ class _BodyState extends State<Body> {
                       ),
                       RoundedButton(
                         text: "Get My Info",
-                        onPress: () {},
+                        onPress: () {
+                          setState(() {
+                            vaccineInfo = "Biontech";
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -114,7 +121,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfCoronaTest() {
     return ItemCard(
-      routePage: const CoronaTestWebView(),
+      routePage: const NewPage(),
       image: Image.asset(ImageAssets().coronaIcon, alignment: Alignment.center),
       color: ItemCardConstants().coronaTestItemColor,
       widget: Text(
@@ -126,7 +133,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfVaccination() {
     return ItemCard(
-      routePage: const VaccinationPage(),
+      routePage: const NewPage(),
       image:
           Image.asset(ImageAssets().vaccineIcon, alignment: Alignment.center),
       color: ItemCardConstants().vaccinationItemColor,
