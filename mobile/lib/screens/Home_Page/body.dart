@@ -88,6 +88,9 @@ class _BodyState extends State<Body> {
                             location.latitude,
                             location.longitude,
                           );
+                          await location.getCurrentCity(
+                              database, "test1@test.com");
+
                           setState(() {
                             lat = location.latitude.toString().substring(0, 8);
                             lon = location.longitude.toString().substring(0, 8);

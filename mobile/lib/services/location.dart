@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
+
+import 'package:mongo_dart/mongo_dart.dart';
 
 class Location {
   late double latitude;
@@ -16,6 +19,23 @@ class Location {
       longitude = position.longitude;
     } catch (e) {
       print("error");
+    }
+  }
+
+  Future<void> getCurrentCity(
+    FirebaseFirestore db,
+    String email,
+  ) async {
+    try {
+      final ref = db.collection("locationAndUserInfo").doc("email");
+      final docSnap = await ref.get();
+      final data = docSnap.data();
+      final lat = data!['lat'];
+      final lon = data['lon'];
+      print(lat);
+      print(lon);
+    } catch (e) {
+      print(e);
     }
   }
 
