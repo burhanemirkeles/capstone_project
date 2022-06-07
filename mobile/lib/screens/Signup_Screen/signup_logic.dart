@@ -19,6 +19,7 @@ class SignupLogic {
       String vaccinationType = VaccinationType.toString().split('.').last;
 
       int vaccinationCount;
+
       if (vaccinationType ==
           VaccinationTypeEnum.NotVaccinated.toShortString()) {
         vaccinationCount = 0;

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, avoid_print
+// ignore_for_file: unused_import, avoid_print, prefer_const_constructors
 
 import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/assets.dart';
@@ -11,6 +11,7 @@ import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
 import 'package:capstone_project/screens/Information_Page/information_page.dart';
 import 'package:capstone_project/screens/New_Pages/new_page_for_test.dart';
 import 'package:capstone_project/services/location.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import "package:capstone_project/screens/Home_Page/components/itemCardConstants.dart";
 import 'package:geolocator/geolocator.dart';
@@ -28,6 +29,9 @@ class _BodyState extends State<Body> {
   String lat = " ";
   String lon = " ";
   String cityName = " ";
+  String vaccineInfo = " ";
+
+  var database = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +55,10 @@ class _BodyState extends State<Body> {
                         ],
                       ),
                       Row(
-                        children: const [
+                        children: [
                           CustomTextLabelContainer(
-                            childWidgetOne: Text("Location:"),
-                            childWidgetTwo: Text("Besiktas"),
+                            childWidgetOne: Text("Vaccination: "),
+                            childWidgetTwo: Text(vaccineInfo),
                           ),
                           CustomTextLabelContainer(
                             childWidgetOne: Text(""),
@@ -78,10 +82,16 @@ class _BodyState extends State<Body> {
                         text: "Get My Info",
                         onPress: () async {
                           await location.getCurrentLocation();
-
+                          await location.sendLocationDataToFirestore(
+                            database,
+                            "email2",
+                            location.latitude,
+                            location.longitude,
+                          );
                           setState(() {
                             lat = location.latitude.toString().substring(0, 8);
                             lon = location.longitude.toString().substring(0, 8);
+                            vaccineInfo = "Biontech";
                           });
                         },
                       ),
