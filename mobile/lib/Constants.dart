@@ -11,7 +11,7 @@ const kPrimaryColor = Color(0xFF6F35A5);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
 const euHealthPassportUrl =
     "https://ec.europa.eu/info/live-work-travel-eu/coronavirus-response/safe-covid-19-vaccines-europeans/eu-digital-covid-certificate_en";
-
+const coronaTestUrl = "https://tr.usembassy.gov/covid-19-information-2/";
 var kWelcomeScreenTextStyle = GoogleFonts.poppins(
   fontSize: 14,
   letterSpacing: 0.2,

@@ -1,17 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ffi';
-
-import 'package:capstone_project/Constants.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/circularButton.dart';
-import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/model/vaccination_type.dart';
 import 'package:capstone_project/screens/Vaccination_Page/informationBody.dart';
 import 'package:capstone_project/screens/Vaccination_Page/vaccinationInfoConstants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class VaccinationPage extends StatefulWidget {
   const VaccinationPage({Key? key}) : super(key: key);

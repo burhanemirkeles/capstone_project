@@ -3,6 +3,7 @@ import 'package:capstone_project/components/assets.dart';
 import 'package:capstone_project/components/backgroundForLanding.dart';
 import 'package:capstone_project/components/customTextLabelContainer.dart';
 import 'package:capstone_project/components/roundedButton.dart';
+import 'package:capstone_project/screens/Corona_Test_Page/coronaTestScreen.dart';
 import 'package:capstone_project/screens/EU_Health_Passport_WV_page/eu_health_passport.dart';
 import 'package:capstone_project/screens/Home_Page/Map/map_view.dart';
 import 'package:capstone_project/screens/Home_Page/components/item_card.dart';
@@ -113,7 +114,7 @@ class _BodyState extends State<Body> {
 
   ItemCard _itemCardOfCoronaTest() {
     return ItemCard(
-      routePage: const NewPage(),
+      routePage: const CoronaTestWebView(),
       image: Image.asset(ImageAssets().coronaIcon, alignment: Alignment.center),
       color: ItemCardConstants().coronaTestItemColor,
       widget: Text(
