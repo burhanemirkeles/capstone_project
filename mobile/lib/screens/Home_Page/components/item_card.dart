@@ -22,6 +22,7 @@ class ItemCard extends StatelessWidget {
   final Image image;
   final Widget widget;
   final EdgeInsets? margin;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

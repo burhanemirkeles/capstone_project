@@ -23,7 +23,7 @@ class _CustomTextLabelContainerState extends State<CustomTextLabelContainer> {
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       padding: const EdgeInsets.all(15),
       //width: 160,
-      height: 50,
+      //height: 50,
       decoration: BoxDecoration(
         color: kPrimaryLightColor,
         borderRadius: BorderRadius.circular(10),
