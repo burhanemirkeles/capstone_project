@@ -1,7 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:capstone_project/components/backgroundForLanding.dart';
+import 'package:capstone_project/components/circularButton.dart';
+import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/screens/Relatives_Page/relative_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+final auth = FirebaseAuth.instance;
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -15,41 +22,40 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Background(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _textOfPage(),
-            Container(
-              width: 384,
-              height: 646,
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(30.32),
-                color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 70, 0, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _textOfPage(),
+              Container(
+                width: 384,
+                height: 450,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(30.32),
+                  color: Color.fromARGB(255, 231, 170, 170),
+                ),
+                child: ListView(
+                  children: [
+                    Column(
+                      children: const [
+                        RelativesCard(
+                          covStatus: "Sinovac 3 doses",
+                          relativeName: "Orhan Keleş",
+                        ),
+                        RelativesCard(
+                          covStatus: "PfizerBiontech 2 doses",
+                          relativeName: "Ömer Keleş",
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              child: ListView(
-                children: [
-                  Column(
-                    children: const [
-                      RelativesCard(
-                        relativeName: "Uğur Pamuk",
-                        covStatus: "Negative",
-                      ),
-                      RelativesCard(
-                        relativeName: "Hülya Pamuk",
-                        covStatus: "Negative",
-                      ),
-                      RelativesCard(
-                        relativeName: "Alp Pamuk",
-                        covStatus: "Negative",
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,4 @@
 // ignore_for_file: avoid_print, import_of_legacy_library_into_null_safe
-//TODO: locationAndUserInfo colection ı değiştir & GetCurrentLocation position alsın!!
-import 'package:capstone_project/screens/Vaccination_Page/vaccination_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
@@ -33,11 +31,6 @@ class Location {
     double? longitude,
   ) async {
     try {
-      //final ref = db.collection("locationAndUserInfo").doc("email");
-      //final docSnap = await ref.get();
-      //final data = docSnap.data();
-      //latitude = data!['lat'];
-      //longitude = data['lon'];
       final Coordinates coordinates = Coordinates(latitude, longitude);
       final address =
           await Geocoder.local.findAddressesFromCoordinates(coordinates);

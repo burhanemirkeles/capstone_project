@@ -44,7 +44,7 @@ class RelativesCard extends StatelessWidget {
             ),
           ),
           Text(
-            "Covid Status: $covStatus",
+            "Vaccine Status: $covStatus",
             style: GoogleFonts.poppins(
               fontSize: 15,
               fontWeight: FontWeight.w500,

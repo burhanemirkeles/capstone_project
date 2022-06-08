@@ -8,6 +8,7 @@ import 'package:capstone_project/components/roundedButton.dart';
 import 'package:capstone_project/components/roundedInputField.dart';
 import 'package:capstone_project/components/textFieldContainer.dart';
 import 'package:capstone_project/model/vaccination_type.dart';
+import 'package:capstone_project/screens/Login_Screen/login_screen.dart';
 
 import 'package:capstone_project/screens/Signup_Screen/signup_logic.dart';
 import 'package:capstone_project/screens/Welcome_Screen/welcome_screen.dart';
@@ -15,7 +16,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -235,29 +235,31 @@ RoundedInputField _inputFieldForPassword(TextEditingController controller) {
 }
 
 RoundedButton _signupButton(
-    TextEditingController controllerName,
-    TextEditingController controllerEmail,
-    TextEditingController controllerPassword,
-    BuildContext context,
-    FirebaseAuth _auth,
-    DatabaseReference databaseReference,
-    FirebaseFirestore database,
-    VaccinationTypeEnum vaccinationType,
-    TextEditingController controllerVaccinationCount) {
+  TextEditingController controllerName,
+  TextEditingController controllerEmail,
+  TextEditingController controllerPassword,
+  BuildContext context,
+  FirebaseAuth _auth,
+  DatabaseReference databaseReference,
+  FirebaseFirestore database,
+  VaccinationTypeEnum vaccinationType,
+  TextEditingController controllerVaccinationCount,
+) {
   String _txtForButton = "SIGN UP";
   return RoundedButton(
-    text: _txtForButton,
-    borderRadius: 16,
-    textStyle: kHeadingTextStyle,
-    color: const Color.fromRGBO(255, 113, 143, 1),
-    onPress: () async => await SignupLogic().signUp(
-      controllerName,
-      controllerEmail,
-      controllerPassword,
-      _auth,
-      database,
-      vaccinationType,
-      controllerVaccinationCount,
-    ),
-  );
+      text: _txtForButton,
+      borderRadius: 16,
+      textStyle: kHeadingTextStyle,
+      color: const Color.fromRGBO(255, 113, 143, 1),
+      onPress: () async {
+        await SignupLogic().signUp(
+            controllerName,
+            controllerEmail,
+            controllerPassword,
+            _auth,
+            database,
+            vaccinationType,
+            controllerVaccinationCount);
+        Navigator.pop(context);
+      });
 }
